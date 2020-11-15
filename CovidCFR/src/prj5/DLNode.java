@@ -12,7 +12,7 @@ package prj5;
  * @author 
  * @version 11.14.2020
  */
-public class DLNode {
+public class DLNode<T> {
 
     public DLNode() {
         // TODO Auto-generated constructor stub
