@@ -56,10 +56,12 @@ public interface ListInterface<T> {
 
 
     /**
-     * Returns the entry at the given position starting at 0.
+     * Returns the entry at the given position starting at 0. Throws an
+     * IllegalArgumentException if position is invalid.
      * 
      * @param position
      *            Position in the list
+     * @throws IllegalArgumentException
      * @return Entry's data at that position of the list.
      */
     public T getEntry(int position);
@@ -108,7 +110,7 @@ public interface ListInterface<T> {
     /**
      * Returns the first entry in the list as a node
      * 
-     * @return First node of the list
+     * @return First node of the list, null if list is empty.
      */
     public DLNode<T> getFront();
 

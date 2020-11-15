@@ -29,7 +29,7 @@ public class LinkedList<T> implements ListInterface<T> {
 
     /** {@inheritDoc} */
     @Override
-    public void add(Object anEntry) {
+    public void add(T anEntry) {
         // TODO Auto-generated method stub
 
     }
@@ -37,7 +37,7 @@ public class LinkedList<T> implements ListInterface<T> {
 
     /** {@inheritDoc} */
     @Override
-    public boolean remove(Object anEntry) {
+    public boolean remove(T anEntry) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -52,7 +52,7 @@ public class LinkedList<T> implements ListInterface<T> {
 
 
     @Override
-    public int getPosition(Object anEntry) {
+    public int getPosition(T anEntry) {
         // TODO Auto-generated method stub
         return 0;
     }
@@ -68,7 +68,7 @@ public class LinkedList<T> implements ListInterface<T> {
 
     /** {@inheritDoc} */
     @Override
-    public boolean contains(Object anEntry) {
+    public boolean contains(T anEntry) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -110,6 +110,21 @@ public class LinkedList<T> implements ListInterface<T> {
     @Override
     public DLNode<T> getFront() {
         // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    /**
+     * Returns the content the list in the format of an brackets enclosing
+     * the contents of the list separated by commas. For example, a list
+     * with the contents A, B, C (in order) returns "[A, B, C]" without
+     * quotations.
+     * 
+     * @return Contents of the list in String format.
+     */
+    @Override
+    public String toString() {
+        // TODO to be implemented
         return null;
     }
 
