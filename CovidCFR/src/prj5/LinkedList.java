@@ -1,22 +1,116 @@
 /**
  * “I have neither given nor received unauthorized assistance on this
- * assignment.” - 
+ * assignment.” - JC
  */
 
 package prj5;
 
 // Java Doc ................................................................
 /**
- * TODO Fill in the blanks and add initials to honor code.
+ * Constructs and manages a List of Doubly-Linked nodes
  * 
- * @author
+ * @author Jeff Chen (chenjeff4840)
  * @version 11.14.2020
  */
-public class LinkedList<T> {
+public class LinkedList<T> implements ListInterface<T> {
 
+    // Fields ..................................................................
+    private int size;
+    private DLNode<T> head;
 
+    // Methods .................................................................
+    /**
+     * TODO Add description
+     */
     public LinkedList() {
         // TODO Auto-generated constructor stub
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public void add(Object anEntry) {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean remove(Object anEntry) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean remove(int position) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    @Override
+    public int getPosition(Object anEntry) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public T getEntry(int position) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean contains(Object anEntry) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public int getLength() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public void clear() {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public T[] toArray() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    /** {@inheritDoc} */
+    @Override
+    public DLNode<T> getFront() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
