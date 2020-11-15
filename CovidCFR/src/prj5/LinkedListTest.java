@@ -286,4 +286,27 @@ public class LinkedListTest extends TestCase {
         list.add("C");
         assertEquals("[A, B, C]", list.toString());
     }
+
+
+    /**
+     * Helper method used to check the contents of 2 arrays.
+     * 
+     * @param arr1
+     *            Array to check arr2 to
+     * @param arr2
+     *            Array to check arr1 to
+     * @return true if arrays have the same content, false otherwise.
+     */
+    private boolean checkArrContents(String[] arr1, String[] arr2) {
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+
+        for (int i = 0; i < arr1.length; i++) {
+            if (!arr1[i].equals(arr2[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
