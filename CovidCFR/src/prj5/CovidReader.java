@@ -28,9 +28,9 @@ public class CovidReader {
      * 
      * @param filename
      *            Name of the file containing State CFR information
-     * 
+     * @throws FileNotFoundException
      */
-    public CovidReader(String filename) {
+    public CovidReader(String filename) throws FileNotFoundException {
         states = readStateFile(filename);
         // TODO Calls the CovidGUI class.
     }
