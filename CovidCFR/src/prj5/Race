@@ -54,7 +54,7 @@ public class Race {
      * This getter method will retrieve the string representing
      * the name of the race
      *
-     * @return Name of the state
+     * @return Name of the race
      */
     public String getName() {
         return name;
