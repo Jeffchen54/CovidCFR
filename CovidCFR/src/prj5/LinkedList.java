@@ -15,77 +15,123 @@ package prj5;
 public class LinkedList<T> implements ListInterface<T> {
 
     // Fields ..................................................................
-    private int size;
+    private int numberOfEntries;
     private DLNode<T> head;
 
-    // Methods .................................................................
+    // Constructor .............................................................
     /**
-     * TODO Add description
+     * Constructs an empty LinkedList
      */
     public LinkedList() {
-        // TODO Auto-generated constructor stub
+        numberOfEntries = 0;
+        head = null;
     }
+
+    // Methods .................................................................
 
 
     /** {@inheritDoc} */
     @Override
     public void add(T anEntry) {
-        // TODO Auto-generated method stub
+        DLNode<T> newNode = new DLNode<>(anEntry);
 
+        if (isEmpty()) {
+            head = newNode;
+        }
+        else {
+            DLNode<T> lastNode = getNodeAt(numberOfEntries - 1);
+            lastNode.setNextNode(newNode);
+            newNode.setPrevNode(newNode);
+        }
+        numberOfEntries++;
     }
 
 
     /** {@inheritDoc} */
     @Override
     public boolean remove(T anEntry) {
-        // TODO Auto-generated method stub
-        return false;
+        if (!contains(anEntry)) {
+            return false;
+        }
+
+        return remove(getPosition(anEntry));
     }
 
 
     /** {@inheritDoc} */
     @Override
     public boolean remove(int position) {
-        // TODO Auto-generated method stub
-        return false;
+
+        if ((position >= 0) && (position < numberOfEntries)) {
+
+            if (position == 0) {
+                head = head.getNextNode();
+            }
+            DLNode<T> before = getNodeAt(position - 1);
+            DLNode<T> after = before.getNextNode().getNextNode();
+
+            before.setNextNode(after);
+            after.setPrevNode(before);
+        }
+        else {
+            return false;
+        }
+
+        numberOfEntries--;
+        return true;
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public int getPosition(T anEntry) {
-        // TODO Auto-generated method stub
-        return 0;
+        DLNode<T> search = head;
+
+        for (int i = 0; head != null; i++) {
+            if (search.getData().equals(anEntry)) {
+                return i;
+            }
+        }
+        return -1;
+
     }
 
 
     /** {@inheritDoc} */
     @Override
     public T getEntry(int position) {
-        // TODO Auto-generated method stub
-        return null;
+        if ((position < 0) || (position >= numberOfEntries)) {
+            throw new IllegalArgumentException();
+        }
+
+        DLNode<T> search = head;
+        for (int i = 0; i < position; i++) {
+            search = search.getNextNode();
+        }
+        return search.getData();
     }
 
 
     /** {@inheritDoc} */
     @Override
     public boolean contains(T anEntry) {
-        // TODO Auto-generated method stub
+
+        DLNode<T> search = head;
+        while (search != null) {
+            if (search.getData().equals(anEntry)) {
+                return true;
+            }
+            search = search.getNextNode();
+        }
         return false;
     }
 
 
     /** {@inheritDoc} */
     @Override
-    public int getLength() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-
-    /** {@inheritDoc} */
-    @Override
     public void clear() {
-        // TODO Auto-generated method stub
+        head = null;
+        numberOfEntries = 0;
 
     }
 
@@ -93,24 +139,58 @@ public class LinkedList<T> implements ListInterface<T> {
     /** {@inheritDoc} */
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return numberOfEntries == 0;
     }
 
 
     /** {@inheritDoc} */
+    @SuppressWarnings("unchecked")
     @Override
     public T[] toArray() {
-        // TODO Auto-generated method stub
-        return null;
+        T[] array = (T[])(new Object[numberOfEntries]);
+
+        DLNode<T> search = head;
+        for (int i = 0; i < numberOfEntries; i++) {
+            array[i] = search.getData();
+            search = search.getNextNode();
+        }
+        return array;
     }
 
 
     /** {@inheritDoc} */
     @Override
     public DLNode<T> getFront() {
-        // TODO Auto-generated method stub
-        return null;
+        return head;
+    }
+
+
+    /** {@inheritDoc} */
+    @SuppressWarnings("unchecked")
+    public DLNode<T> getNodeAt(int position) {
+        if ((position < 0) || (position >= numberOfEntries)) {
+            throw new IllegalArgumentException();
+        }
+
+        DLNode<T> search = head;
+        for (int i = 0; i < position; i++) {
+            search = search.getNextNode();
+        }
+
+        return (DLNode<T>)search;
+    }
+
+    // Unique Methods ..........................................................
+
+
+    /**
+     * Returns the number of entries in the list
+     * 
+     * @return number of entries in the list
+     */
+    public int getNumberOfEntries() {
+        return numberOfEntries;
+
     }
 
 
@@ -124,8 +204,22 @@ public class LinkedList<T> implements ListInterface<T> {
      */
     @Override
     public String toString() {
-        // TODO to be implemented
-        return null;
-    }
+        StringBuilder contents = new StringBuilder();
 
+        contents.append("[");
+        DLNode<T> search = head;
+
+        while (search != null) {
+            if (search.getNextNode == null) {
+                contents.append(search.getData());
+            }
+            else {
+                contents.append(search.getData() + ", ");
+            }
+            search = search.getNextNode();
+        }
+
+        contents.append("]");
+        return contents.toString();
+    }
 }

@@ -16,7 +16,7 @@ package prj5;
 public interface ListInterface<T> {
 
     /**
-     * Adds an entry to the list
+     * Adds an entry at the end of the list
      * 
      * @param anEntry
      *            Entry to be added to the list
@@ -77,12 +77,6 @@ public interface ListInterface<T> {
     public boolean contains(T anEntry);
 
 
-    /**
-     * Returns the length of the list
-     * 
-     * @return length of the list
-     */
-    public int getLength();
 
 
     /**
@@ -114,4 +108,14 @@ public interface ListInterface<T> {
      */
     public DLNode<T> getFront();
 
+    /**
+     * Returns the Node at the specified position starting at 0. Throws an 
+     * IllegalArgumentException if the position given is invalid.
+     * 
+     * @param position 
+     *          position of node in list to return
+     * @throws IllegalArgumentException
+     * @return node at specified position
+     */
+    public DLNode<T> getNodeAt(int position);
 }
