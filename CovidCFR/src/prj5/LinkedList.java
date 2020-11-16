@@ -67,11 +67,17 @@ public class LinkedList<T> implements ListInterface<T> {
             if (position == 0) {
                 head = head.getNextNode();
             }
-            DLNode<T> before = getNodeAt(position - 1);
-            DLNode<T> after = before.getNextNode().getNextNode();
+            else if (position == numberOfEntries - 1) {
+                DLNode<T> before = getNodeAt(position - 1);
+                before.setNextNode(null);
+            }
+            else {
+                DLNode<T> before = getNodeAt(position - 1);
+                DLNode<T> after = before.getNextNode().getNextNode();
 
-            before.setNextNode(after);
-            after.setPrevNode(before);
+                before.setNextNode(after);
+                after.setPrevNode(before);
+            }
         }
         else {
             return false;
@@ -87,10 +93,11 @@ public class LinkedList<T> implements ListInterface<T> {
     public int getPosition(T anEntry) {
         DLNode<T> search = head;
 
-        for (int i = 0; head != null; i++) {
+        for (int i = 0; search != null; i++) {
             if (search.getData().equals(anEntry)) {
                 return i;
             }
+            search = search.getNextNode();
         }
         return -1;
 
@@ -166,7 +173,6 @@ public class LinkedList<T> implements ListInterface<T> {
 
 
     /** {@inheritDoc} */
-    @SuppressWarnings("unchecked")
     public DLNode<T> getNodeAt(int position) {
         if ((position < 0) || (position >= numberOfEntries)) {
             throw new IllegalArgumentException();
@@ -210,7 +216,7 @@ public class LinkedList<T> implements ListInterface<T> {
         DLNode<T> search = head;
 
         while (search != null) {
-            if (search.getNextNode == null) {
+            if (search.getNextNode() == null) {
                 contents.append(search.getData());
             }
             else {

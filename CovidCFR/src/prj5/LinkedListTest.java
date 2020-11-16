@@ -35,19 +35,19 @@ public class LinkedListTest extends TestCase {
      */
     public void testAdd() {
         list.add("Konnichiwa");
-        assertEquals(1, list.getLength());
+        assertEquals(1, list.getNumberOfEntries());
         assertEquals("[Konnichiwa]", list.toString());
         assertEquals("Konnichiwa", list.getEntry(0));
 
         list.add("Watashi No");
-        assertEquals(2, list.getLength());
+        assertEquals(2, list.getNumberOfEntries());
         assertEquals("[Konnichiwa, Watashi No]", list.toString());
         assertEquals("Watashi No", list.getEntry(1));
 
         list.add("Tomodachi");
-        assertEquals(3, list.getLength());
+        assertEquals(3, list.getNumberOfEntries());
         assertEquals("[Konnichiwa, Watashi No, Tomodachi]", list.toString());
-        assertEquals("Tomodachi", list.getEntry(1));
+        assertEquals("Tomodachi", list.getEntry(2));
     }
 
 
@@ -60,7 +60,7 @@ public class LinkedListTest extends TestCase {
         list.add("Peanut Butter");
         assertTrue(list.remove("Peanut Butter"));
         assertEquals("[]", list.toString());
-        assertEquals(0, list.getLength());
+        assertEquals(0, list.getNumberOfEntries());
 
         list.add("A");
         list.add("B");
@@ -70,15 +70,15 @@ public class LinkedListTest extends TestCase {
 
         assertTrue(list.remove("F"));
         assertEquals("[A, B, C, D]", list.toString());
-        assertEquals(4, list.getLength());
+        assertEquals(4, list.getNumberOfEntries());
 
         assertTrue(list.remove("A"));
         assertEquals("[B, C, D]", list.toString());
-        assertEquals(3, list.getLength());
+        assertEquals(3, list.getNumberOfEntries());
 
         assertTrue(list.remove("C"));
         assertEquals("[B, D]", list.toString());
-        assertEquals(2, list.getLength());
+        assertEquals(2, list.getNumberOfEntries());
 
         assertFalse(list.remove("C"));
     }
@@ -95,7 +95,7 @@ public class LinkedListTest extends TestCase {
         list.add("Peanut Butter");
         assertTrue(list.remove(0));
         assertEquals("[]", list.toString());
-        assertEquals(0, list.getLength());
+        assertEquals(0, list.getNumberOfEntries());
 
         list.add("A");
         list.add("B");
@@ -105,15 +105,15 @@ public class LinkedListTest extends TestCase {
 
         assertTrue(list.remove(4));
         assertEquals("[A, B, C, D]", list.toString());
-        assertEquals(4, list.getLength());
+        assertEquals(4, list.getNumberOfEntries());
 
         assertTrue(list.remove(0));
         assertEquals("[B, C, D]", list.toString());
-        assertEquals(3, list.getLength());
+        assertEquals(3, list.getNumberOfEntries());
 
         assertTrue(list.remove(1));
         assertEquals("[B, D]", list.toString());
-        assertEquals(2, list.getLength());
+        assertEquals(2, list.getNumberOfEntries());
 
         assertFalse(list.remove(2));
     }
@@ -186,7 +186,7 @@ public class LinkedListTest extends TestCase {
     public void testClear() {
         list.clear();
         assertEquals("[]", list.toString());
-        assertEquals(0, list.getLength());
+        assertEquals(0, list.getNumberOfEntries());
 
         list.add("Ko");
         list.add("No");
@@ -194,7 +194,7 @@ public class LinkedListTest extends TestCase {
         list.add("DA!!!");
         list.clear();
         assertEquals("[]", list.toString());
-        assertEquals(0, list.getLength());
+        assertEquals(0, list.getNumberOfEntries());
     }
 
 
@@ -202,18 +202,18 @@ public class LinkedListTest extends TestCase {
      * Tests the getLength() method
      */
     public void testGetLength() {
-        assertEquals(0, list.getLength());
+        assertEquals(0, list.getNumberOfEntries());
 
         list.add("A");
         list.add("B");
 
-        assertEquals(2, list.getLength());
+        assertEquals(2, list.getNumberOfEntries());
 
         list.remove(1);
-        assertEquals(1, list.getLength());
+        assertEquals(1, list.getNumberOfEntries());
 
         list.remove(0);
-        assertEquals(0, list.getLength());
+        assertEquals(0, list.getNumberOfEntries());
     }
 
 
@@ -297,7 +297,7 @@ public class LinkedListTest extends TestCase {
      *            Array to check arr1 to
      * @return true if arrays have the same content, false otherwise.
      */
-    private boolean checkArrContents(String[] arr1, String[] arr2) {
+    private boolean checkArrContents(Object[] arr1, String[] arr2) {
         if (arr1.length != arr2.length) {
             return false;
         }
