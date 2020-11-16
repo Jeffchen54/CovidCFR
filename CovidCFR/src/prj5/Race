@@ -24,7 +24,7 @@ public class Race {
      * the CFR for the race.
      * 
      * @param stateName
-     *              Name representing state
+     *              Name representing the race.
      * @param cases
      *              Amount of COVID-19 cases in the state
      * @param fatality
@@ -42,9 +42,9 @@ public class Race {
      * percentage of COVID-19 cases for the associated race
      *
      * @param cases
-     *              Amount of COVID-19 cases in the state
+     *              Amount of COVID-19 cases for the race
      * @param fatality
-     *              Amount of deaths due to COVID-19 in the state
+     *              Amount of deaths due to COVID-19 for the race
      */
     private double calcCFR(int cases, int fatality) {
         return ( ((double)fatality / (double)cases) * 100 );
@@ -52,7 +52,7 @@ public class Race {
     
     /**
      * This getter method will retrieve the string representing
-     * the state's name
+     * the name of the race
      *
      * @return Name of the state
      */
@@ -62,7 +62,7 @@ public class Race {
     
     /**
      * This getter method will retrieve the percentage of COVID-19
-     * cases resulting in fatality for the associated race in the state
+     * cases resulting in fatality for the associated race
      *
      * @return CFR
      */
