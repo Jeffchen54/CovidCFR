@@ -1,6 +1,6 @@
 /**
- * “I have neither given nor received unauthorized assistance on this
- * assignment.” - Aziz Abousam
+ * â€œI have neither given nor received unauthorized assistance on this
+ * assignment.â€� - Aziz Abousam
  */
 
 package prj5;
@@ -47,6 +47,9 @@ public class Race {
      *              Amount of deaths due to COVID-19 for the race
      */
     private double calcCFR(int cases, int fatality) {
+        if (cases == -1 || fatality == -1) {
+            return -1;
+        }
         return ( ((double)fatality / (double)cases) * 100 );
     }
     
