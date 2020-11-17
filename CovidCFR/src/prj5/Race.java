@@ -23,15 +23,15 @@ public class Race {
      * Assigns state name and calls the helper method to calculate
      * the CFR for the race.
      * 
-     * @param stateName
+     * @param raceName
      *              Name representing the race.
      * @param cases
      *              Amount of COVID-19 cases in the state
      * @param fatality
      *              Amount of deaths due to COVID-19 in the state
      */
-    public Race(String stateName, int cases, int fatality) {
-        name = stateName;
+    public Race(String raceName, int cases, int fatality) {
+        name = raceName;
         CFR = calcCFR(cases, fatality);
     }
     
