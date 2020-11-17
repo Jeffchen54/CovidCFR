@@ -31,6 +31,12 @@ public class RaceTest extends TestCase {
      */
     public void testRace() {
         assertEquals(7.44, race.getCFR(), 0.01);
+        race = new Race("black", 179563, -1);
+        assertEquals(-1, race.getCFR(), 0.01);
+        race = new Race("black", -1, 13365);
+        assertEquals(-1, race.getCFR(), 0.01);
+        race = new Race("black", -1, -1);
+        assertEquals(-1, race.getCFR(), 0.01);
     }
     
     /**
