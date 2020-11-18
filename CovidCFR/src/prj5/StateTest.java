@@ -32,7 +32,7 @@ public class StateTest extends TestCase
     {
         state.sortAlpha();
         assertEquals(state.getNumberOfEntries(), 5);
-        assertEquals(state.toString(), "DC\nasian: 5407 cases, 4.7% CFR\n"
+        assertEquals(state.toString(), "asian: 5407 cases, 4.7% CFR\n"
             + "black: 179563 cases, 7.4% CFR\nlatino: 97118 cases, 2.3% CFR\n"
             + "other: 108784 cases, 0.2% CFR\nwhite: 70678 cases, 2.7% CFR");
     }
@@ -44,7 +44,7 @@ public class StateTest extends TestCase
     {
         state.sortCFR();
         assertEquals(state.getNumberOfEntries(), 5);
-        assertEquals(state.toString(), "DC\nblack: 179563 cases, 7.4% CFR\n"
+        assertEquals(state.toString(), "black: 179563 cases, 7.4% CFR\n"
             + "asian: 5407 cases, 4.7% CFR\nwhite: 70678 cases, 2.7% CFR\n"
             + "latino: 97118 cases, 2.3% CFR\nother: 108784 cases, 0.2% CFR");
     }
