@@ -116,12 +116,12 @@ public class State extends LinkedList<Race>
 
     /**
      * This method returns a string form of the information of a state.
+     * @return the states information as a string.
      */
     public String toString()
     {
         StringBuilder build = new StringBuilder();
-        build.append(stateName);
-        build.append("\n" + this.getEntry(0));
+        build.append(this.getEntry(0));
         build.append("\n" + this.getEntry(1));
         build.append("\n" + this.getEntry(2));
         build.append("\n" + this.getEntry(3));
