@@ -31,7 +31,8 @@ public class State extends LinkedList<Race> {
 
         head = super.getFront();
     }
-    
+
+
     /**
      * Returns the state's name
      * 
@@ -45,11 +46,15 @@ public class State extends LinkedList<Race> {
     /**
      * This method sorts the races
      * into alphabetical order.
+     * 
+     * @return iterator of the alphabetically sorted list.
      */
-    public void sortAlpha() {
+    public StateIterator sortAlpha() {
         for (int i = 1; i < super.getNumberOfEntries(); i++) {
             alphaSort(i);
         }
+        head = super.getFront();
+        return new StateIterator();
     }
 
 
@@ -60,24 +65,23 @@ public class State extends LinkedList<Race> {
      * @param startingIndex
      *            Index to sort and index where the unsorted portion
      *            begins.
-     * @return iterator of the alphabetically sorted list.
      * @author Jeff Chen (chenjeff4848)
      */
-    private StateIterator alphaSort(int startingIndex) {
-        Race alpha = super.getNodeAt(startingIndex).getData();
+    private void alphaSort(int startingIndex) {
+        Race toInsert = super.getNodeAt(startingIndex).getData();
         DLNode<Race> otherNode = head;
         boolean found = false;
 
         for (int i = 0; i < startingIndex && !found; i++) {
-            if (alpha.getName().compareTo(otherNode.getData().getName()) < 0) {
+            if (toInsert.getName().compareTo(otherNode.getData()
+                .getName()) < 0) {
                 found = true;
                 super.remove(startingIndex);
-                super.add(i, alpha);
+                super.add(i, toInsert);
             }
 
             otherNode = otherNode.getNextNode();
         }
-        return new StateIterator();
     }
 
 
@@ -87,9 +91,8 @@ public class State extends LinkedList<Race> {
      * @param start
      *            the start of the
      *            index.
-     * @return iterator of the greatest to least CFR list.
      */
-    private StateIterator CFRSort(int start) {
+    private void cfrSort(int start) {
         Race race = super.getNodeAt(start).getData();
         DLNode<Race> node2 = super.getFront();
         boolean flag = false;
@@ -103,17 +106,20 @@ public class State extends LinkedList<Race> {
             i++;
             node2 = node2.getNextNode();
         }
-        return new StateIterator();
     }
 
 
     /**
      * This method sorts the races by greatest to least by CFR.
+     * 
+     * @return iterator of the greatest to least CFR list.
      */
-    public void sortCFR() {
+    public StateIterator sortCFR() {
         for (int i = 1; i < super.getNumberOfEntries(); i++) {
-            this.CFRSort(i);
+            this.cfrSort(i);
         }
+        head = super.getFront();
+        return new StateIterator();
     }
 
 
@@ -133,7 +139,7 @@ public class State extends LinkedList<Race> {
     }
 
     /**
-     * Iterator which iteratates starting from the beginning of the list to
+     * Iterator which iterates starting from the beginning of the list to
      * the end.
      * 
      * @author Jeff Chen (chenjeff4840)
@@ -155,7 +161,7 @@ public class State extends LinkedList<Race> {
         @Override
         public boolean hasNext() {
 
-            return cursor == null;
+            return cursor != null;
         }
 
 
