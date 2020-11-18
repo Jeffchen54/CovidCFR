@@ -1,9 +1,11 @@
 /**
- * â€œI have neither given nor received unauthorized assistance on this
- * assignment.â€� - Aziz Abousam
+ * "I have neither given nor received unauthorized assistance on this
+ * assignment." - Aziz Abousam, JC
  */
 
 package prj5;
+
+import java.text.DecimalFormat;
 
 // Java Doc ....................................................................
 /**
@@ -16,7 +18,8 @@ public class Race {
     // Fields ..................................................................
     private double CFR;
     private String name;
-    
+    private int cases;
+
     // Constructor .............................................................
     // Constructor .............................................................
     /**
@@ -24,35 +27,38 @@ public class Race {
      * the CFR for the race.
      * 
      * @param raceName
-     *              Name representing the race.
+     *            Name representing the race.
      * @param cases
-     *              Amount of COVID-19 cases in the state
+     *            Amount of COVID-19 cases in the state
      * @param fatality
-     *              Amount of deaths due to COVID-19 in the state
+     *            Amount of deaths due to COVID-19 in the state
      */
     public Race(String raceName, int cases, int fatality) {
         name = raceName;
+        this.cases = cases;
         CFR = calcCFR(cases, fatality);
     }
-    
+
     // Methods .................................................................
-    
+
+
     /**
      * This private helper method will calculate the fatality
      * percentage of COVID-19 cases for the associated race
      *
      * @param cases
-     *              Amount of COVID-19 cases for the race
+     *            Amount of COVID-19 cases for the race
      * @param fatality
-     *              Amount of deaths due to COVID-19 for the race
+     *            Amount of deaths due to COVID-19 for the race
      */
     private double calcCFR(int cases, int fatality) {
         if (cases == -1 || fatality == -1) {
             return -1;
         }
-        return ( ((double)fatality / (double)cases) * 100 );
+        return (((double)fatality / (double)cases) * 100);
     }
-    
+
+
     /**
      * This getter method will retrieve the string representing
      * the name of the race
@@ -62,7 +68,8 @@ public class Race {
     public String getName() {
         return name;
     }
-    
+
+
     /**
      * This getter method will retrieve the percentage of COVID-19
      * cases resulting in fatality for the associated race
@@ -71,5 +78,24 @@ public class Race {
      */
     public double getCFR() {
         return CFR;
+    }
+
+
+    /**
+     * Returns the Race in the format "Race: x cases, x.x% CFR" with no
+     * quotations and numbers instead of x. Only 1 decimal place.
+     * 
+     * @author Jeff Chen (chenjeff4848)
+     * @return Info containing race, cases, and CFR.
+     */
+    @Override
+    public String toString() {
+        StringBuilder contents = new StringBuilder();
+        contents.append(name + ": ");
+        contents.append(cases + " cases, ");
+
+        DecimalFormat df = new DecimalFormat("0.#");
+        contents.append(df.format(CFR) + "% CFR");
+        return contents.toString();
     }
 }
