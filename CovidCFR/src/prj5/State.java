@@ -69,7 +69,7 @@ public class State extends LinkedList<Race> {
      */
     private void alphaSort(int startingIndex) {
         Race toInsert = super.getNodeAt(startingIndex).getData();
-        DLNode<Race> otherNode = head;
+        DLNode<Race> otherNode = super.getFront();
         boolean found = false;
 
         for (int i = 0; i < startingIndex && !found; i++) {
