@@ -33,17 +33,42 @@ public class LinkedList<T> implements ListInterface<T> {
     /** {@inheritDoc} */
     @Override
     public void add(T anEntry) {
-        DLNode<T> newNode = new DLNode<>(anEntry);
+        add(numberOfEntries, anEntry);
+    }
 
-        if (isEmpty()) {
-            head = newNode;
+
+    /** {@inheritDoc} */
+    @Override
+    public void add(int position, T anEntry) {
+        if (position >= 0 && position <= numberOfEntries) {
+            DLNode<T> newNode = new DLNode<>(anEntry);
+
+            if (isEmpty()) {
+                head = newNode;
+            }
+            else if (position == 0) {
+                newNode.setNextNode(head);
+                head.setPrevNode(newNode);
+                head = newNode;
+            }
+            else if (position == numberOfEntries) {
+                DLNode<T> before = getNodeAt(position - 1);
+                before.setNextNode(newNode);
+            }
+
+            else {
+                DLNode<T> before = getNodeAt(position - 1);
+                DLNode<T> current = getNodeAt(position);
+
+                newNode.setPrevNode(before);
+                before.setNextNode(newNode);
+
+                newNode.setNextNode(current);
+                current.setPrevNode(newNode);
+            }
+
+            numberOfEntries++;
         }
-        else {
-            DLNode<T> lastNode = getNodeAt(numberOfEntries - 1);
-            lastNode.setNextNode(newNode);
-            newNode.setPrevNode(newNode);
-        }
-        numberOfEntries++;
     }
 
 

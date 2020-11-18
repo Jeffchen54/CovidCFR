@@ -77,8 +77,6 @@ public interface ListInterface<T> {
     public boolean contains(T anEntry);
 
 
-
-
     /**
      * Clears and resets the list
      */
@@ -108,14 +106,26 @@ public interface ListInterface<T> {
      */
     public DLNode<T> getFront();
 
+
     /**
-     * Returns the Node at the specified position starting at 0. Throws an 
+     * Returns the Node at the specified position starting at 0. Throws an
      * IllegalArgumentException if the position given is invalid.
      * 
-     * @param position 
-     *          position of node in list to return
+     * @param position
+     *            position of node in list to return
      * @throws IllegalArgumentException
      * @return node at specified position
      */
     public DLNode<T> getNodeAt(int position);
+
+
+    /**
+     * Adds an entry at the specified position, pushing later entries back.
+     * 
+     * @param anEntry
+     *            Entry to add
+     * @param position
+     *            Position to add the entry to starting at 0.
+     */
+    public void add(int position, T anEntry);
 }

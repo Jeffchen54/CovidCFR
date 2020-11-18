@@ -31,7 +31,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * Tests the add(T) method
+     * Tests the add(T) method and add(int, T)
      */
     public void testAdd() {
         list.add("Konnichiwa");
@@ -44,10 +44,17 @@ public class LinkedListTest extends TestCase {
         assertEquals("[Konnichiwa, Watashi No]", list.toString());
         assertEquals("Watashi No", list.getEntry(1));
 
-        list.add("Tomodachi");
+        list.add(2, "Tomodachi");
         assertEquals(3, list.getNumberOfEntries());
         assertEquals("[Konnichiwa, Watashi No, Tomodachi]", list.toString());
         assertEquals("Tomodachi", list.getEntry(2));
+        
+        list.add(0, "Beginning");
+        assertEquals("[Beginning, Konnichiwa, Watashi No, Tomodachi]", list.toString());
+        
+        list.add(2, "Middle");
+        assertEquals("[Beginning, Konnichiwa, Middle, Watashi No, Tomodachi]", list.toString());
+
     }
 
 
