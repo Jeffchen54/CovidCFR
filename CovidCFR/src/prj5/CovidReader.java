@@ -73,7 +73,8 @@ public class CovidReader {
 
         for (int i = 0; i < 6; i++) {
 
-            String[] line = file.nextLine().split("\\s+");
+            //String[] line = file.nextLine().split("\\s+");
+            String[] line = file.nextLine().split(", *");
             Race[] races = new Race[5];
             String[] raceNames = { "white", "black", "latinx", "asian",
                 "other" };
@@ -92,8 +93,8 @@ public class CovidReader {
 
 
     /**
-     * Converts a string to an integer. If the string cannot be parsed into
-     * an integer, a -1 is returned.
+     * Converts a string to an integer. If the string (such as NA) 
+     * cannot be parsed into an integer, a -1 is returned.
      * 
      * @param str
      *            String to parse into an integer
