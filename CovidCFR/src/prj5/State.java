@@ -99,7 +99,7 @@ public class State extends LinkedList<Race> {
         boolean flag = false;
         int i = 0;
         while (i < start && !flag) {
-            if (race.getCFR() > node2.getData().getCFR()) {
+            if (race.getCFR() >= node2.getData().getCFR()) {
                 flag = true;
                 this.remove(start);
                 this.add(i, race);
