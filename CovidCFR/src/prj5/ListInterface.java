@@ -10,7 +10,7 @@ package prj5;
  * This is the interface for the LinkedList class
  * 
  * @param <T>
- *          Type of data stored in objects implementing this interface.
+ *            Type of data stored in objects implementing this interface.
  * @author Jeff Chen (chenjeff4840)
  * @version 11.14.2020
  */
@@ -123,7 +123,9 @@ public interface ListInterface<T> {
 
     /**
      * Adds an entry at the specified position, pushing later entries back.
+     * Throws an IllegalArgumentException if position is invalid.
      * 
+     * @throws IllegalArgumentException
      * @param anEntry
      *            Entry to add
      * @param position

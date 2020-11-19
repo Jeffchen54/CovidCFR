@@ -48,13 +48,32 @@ public class LinkedListTest extends TestCase {
         assertEquals(3, list.getNumberOfEntries());
         assertEquals("[Konnichiwa, Watashi No, Tomodachi]", list.toString());
         assertEquals("Tomodachi", list.getEntry(2));
-        
-        list.add(0, "Beginning");
-        assertEquals("[Beginning, Konnichiwa, Watashi No, Tomodachi]", list.toString());
-        
-        list.add(2, "Middle");
-        assertEquals("[Beginning, Konnichiwa, Middle, Watashi No, Tomodachi]", list.toString());
 
+        list.add(0, "Beginning");
+        assertEquals("[Beginning, Konnichiwa, Watashi No, Tomodachi]", list
+            .toString());
+
+        list.add(2, "Middle");
+        assertEquals("[Beginning, Konnichiwa, Middle, Watashi No, Tomodachi]",
+            list.toString());
+
+        IllegalArgumentException exception = null;
+        try {
+            list.add(-1, "Not gonna work");
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+
+        exception = null;
+        try {
+            list.add(6, "Not gonna work");
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
     }
 
 
@@ -165,6 +184,65 @@ public class LinkedListTest extends TestCase {
         assertEquals("A", list.getEntry(0));
         assertEquals("B", list.getEntry(1));
         assertEquals("C", list.getEntry(2));
+
+        exception = null;
+        try {
+            list.getEntry(4);
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+
+        exception = null;
+        try {
+            list.getEntry(-1);
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+    }
+
+
+    /**
+     * Tests the getNodeAt(int) method
+     */
+    public void testGetNodeAt() {
+        IllegalArgumentException exception = null;
+        try {
+            list.getNodeAt(0);
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+
+        list.add("A");
+        list.add("B");
+        list.add("C");
+
+        assertEquals("A", list.getNodeAt(0).getData());
+        assertEquals("B", list.getNodeAt(1).getData());
+        assertEquals("C", list.getNodeAt(2).getData());
+
+        exception = null;
+        try {
+            list.getNodeAt(4);
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+
+        exception = null;
+        try {
+            list.getNodeAt(-1);
+        }
+        catch (IllegalArgumentException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
     }
 
 

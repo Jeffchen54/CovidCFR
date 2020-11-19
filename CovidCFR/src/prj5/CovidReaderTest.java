@@ -2,7 +2,6 @@ package prj5;
 
 import student.TestCase;
 import java.io.FileNotFoundException;
-import java.util.Iterator;
 
 // Java Doc ....................................................................
 /**
@@ -147,8 +146,8 @@ public class CovidReaderTest extends TestCase {
             assertEquals("white: 616402 cases, 5.6% CFR"
                 + "\nblack: 426362 cases, 3.4% CFR"
                 + "\nother: 777332 cases, 0.7% CFR"
-                + "\nlatinx: 738177 cases, -1% CFR"
-                + "\nasian: -1 cases, -1% CFR", states[5].toString());
+                + "\nasian: -1 cases, -1% CFR"
+                + "\nlatinx: 738177 cases, -1% CFR", states[5].toString());
 
             assertEquals(6, states.length);
         }

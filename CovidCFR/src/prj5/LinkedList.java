@@ -71,6 +71,9 @@ public class LinkedList<T> implements ListInterface<T> {
 
             numberOfEntries++;
         }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 
 

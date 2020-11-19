@@ -1,6 +1,6 @@
 /**
  * “I have neither given nor received unauthorized assistance on this
- * assignment.” - 
+ * assignment.” -
  */
 
 package prj5;
@@ -9,10 +9,11 @@ package prj5;
 /**
  * TODO Fill the blanks and add initials to honor code
  * 
- * @author 
+ * @author Aziz Abousam (az1zabousam)
+ * @param <T>
+ *            Type of data stored in objects implementing this interface.
  * @version 11.14.2020
  */
 
 public interface DLNodeInterface<T> {
-    //TODO Add methods
 }

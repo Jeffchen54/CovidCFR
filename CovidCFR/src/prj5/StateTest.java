@@ -16,11 +16,13 @@ import java.util.Iterator;
  *
  */
 public class StateTest extends TestCase {
-    private Race[] races;
     private State state;
 
+    /**
+     * Creates a state with 5 races in random order before each test.
+     */
     public void setUp() {
-        races = new Race[5];
+        Race[] races = new Race[5];
         races[4] = new Race("asian", 5407, 254);
         races[3] = new Race("black", 179563, 13365);
         races[0] = new Race("latino", 97118, 2269);
@@ -57,6 +59,7 @@ public class StateTest extends TestCase {
         assertEquals("white", iter.next().getName());
         assertFalse(iter.hasNext());
 
+        assertNull(iter.next());
     }
 
 
@@ -86,6 +89,8 @@ public class StateTest extends TestCase {
 
         assertEquals("other", iter.next().getName());
         assertFalse(iter.hasNext());
+
+        assertNull(iter.next());
     }
 
 }

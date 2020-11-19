@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
  */
 public class Race {
 
-    private double CFR;
+    private double cfr;
     private String name;
     private int cases;
 
@@ -25,15 +25,15 @@ public class Race {
      * 
      * @param raceName
      *            Name representing the race.
-     * @param cases
+     * @param numCases
      *            Amount of COVID-19 cases in the state
      * @param fatality
      *            Amount of deaths due to COVID-19 in the state
      */
-    public Race(String raceName, int cases, int fatality) {
+    public Race(String raceName, int numCases, int fatality) {
         name = raceName;
-        this.cases = cases;
-        CFR = calcCFR(cases, fatality);
+        this.cases = numCases;
+        cfr = calcCFR(cases, fatality);
     }
 
 
@@ -41,17 +41,17 @@ public class Race {
      * This private helper method will calculate the fatality
      * percentage of COVID-19 cases for the associated race
      *
-     * @param cases
+     * @param numCases
      *            Amount of COVID-19 cases for the race
      * @param fatality
      *            Amount of deaths due to COVID-19 for the race
      * @return CFR calculated using the parameters cases and fatality.
      */
-    private double calcCFR(int cases, int fatality) {
-        if (cases == -1 || fatality == -1) {
+    private double calcCFR(int numCases, int fatality) {
+        if (numCases == -1 || fatality == -1) {
             return -1;
         }
-        return (((double)fatality / (double)cases) * 100);
+        return (((double)fatality / (double)numCases) * 100);
     }
 
 
@@ -73,7 +73,7 @@ public class Race {
      * @return CFR
      */
     public double getCFR() {
-        return CFR;
+        return cfr;
     }
 
 
@@ -91,7 +91,7 @@ public class Race {
         contents.append(cases + " cases, ");
 
         DecimalFormat df = new DecimalFormat("0.#");
-        contents.append(df.format(CFR) + "% CFR");
+        contents.append(df.format(cfr) + "% CFR");
         return contents.toString();
     }
 }
