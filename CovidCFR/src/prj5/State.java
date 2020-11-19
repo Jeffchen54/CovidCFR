@@ -1,15 +1,16 @@
 /**
  * “I have neither given nor received unauthorized
- * assistance on this assignment.” - AA
+ * assistance on this assignment.” - AA, JC
  */
 package prj5;
 
 import java.util.Iterator;
 
 /**
+ * LinkedList which stores and manages race data concerning Covid CFRs,
+ * 
  * @author Andrew Albro aalbro
  * @version 2020.11.15
- *
  */
 public class State extends LinkedList<Race> {
     private String stateName;
@@ -44,10 +45,10 @@ public class State extends LinkedList<Race> {
 
 
     /**
-     * This method sorts the races
-     * into alphabetical order.
+     * Sort that races into alphabetical order based on their names.
      * 
      * @return iterator of the alphabetically sorted list.
+     * @author Jeff Chen (chenjeff4840)
      */
     public StateIterator sortAlpha() {
         for (int i = 1; i < super.getNumberOfEntries(); i++) {

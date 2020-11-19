@@ -7,7 +7,6 @@ package prj5;
 
 import java.text.DecimalFormat;
 
-// Java Doc ....................................................................
 /**
  * Reads the file containing CFR data for each state
  * 
@@ -15,13 +14,11 @@ import java.text.DecimalFormat;
  * @version 11.16.2020
  */
 public class Race {
-    // Fields ..................................................................
+
     private double CFR;
     private String name;
     private int cases;
 
-    // Constructor .............................................................
-    // Constructor .............................................................
     /**
      * Assigns state name and calls the helper method to calculate
      * the CFR for the race.
@@ -39,8 +36,6 @@ public class Race {
         CFR = calcCFR(cases, fatality);
     }
 
-    // Methods .................................................................
-
 
     /**
      * This private helper method will calculate the fatality
@@ -50,6 +45,7 @@ public class Race {
      *            Amount of COVID-19 cases for the race
      * @param fatality
      *            Amount of deaths due to COVID-19 for the race
+     * @return CFR calculated using the parameters cases and fatality.
      */
     private double calcCFR(int cases, int fatality) {
         if (cases == -1 || fatality == -1) {
@@ -86,7 +82,7 @@ public class Race {
      * quotations and numbers instead of x. Only 1 decimal place.
      * 
      * @author Jeff Chen (chenjeff4848)
-     * @return Info containing race, cases, and CFR.
+     * @return race name, number of cases, and CFR.
      */
     @Override
     public String toString() {

@@ -9,6 +9,8 @@ package prj5;
 /**
  * Constructs and manages a List of Doubly-Linked nodes
  * 
+ * @param <T>
+ *            Type of data to be stored in the LinkedList.
  * @author Jeff Chen (chenjeff4840)
  * @version 11.14.2020
  */

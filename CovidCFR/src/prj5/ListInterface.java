@@ -9,6 +9,8 @@ package prj5;
 /**
  * This is the interface for the LinkedList class
  * 
+ * @param <T>
+ *          Type of data stored in objects implementing this interface.
  * @author Jeff Chen (chenjeff4840)
  * @version 11.14.2020
  */

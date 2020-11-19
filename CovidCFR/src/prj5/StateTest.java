@@ -8,6 +8,8 @@ import student.TestCase;
 import java.util.Iterator;
 
 /**
+ * Tests the State class.
+ * 
  * @author Andrew Albro aalbro
  * @author Jeff Chen (chenjeff4840)
  * @version 2020.11.16
