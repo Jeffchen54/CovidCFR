@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 
 import java.util.Iterator;
 
-
 /**
  * Project runner for Project 5.
  * 
@@ -17,10 +16,6 @@ import java.util.Iterator;
  * @version 2020.11.18
  */
 public class Input {
-    public Input() {
-        // nothing needed here
-    }
-
 
     /**
      * Reads a file containing States' CFR information and displays it from

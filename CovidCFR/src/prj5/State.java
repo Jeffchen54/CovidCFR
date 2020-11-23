@@ -99,14 +99,39 @@ public class State extends LinkedList<Race> {
         boolean flag = false;
         int i = 0;
         while (i < start && !flag) {
-            if (race.getCFR() >= node2.getData().getCFR()) {
+            if (race.getCFR() > node2.getData().getCFR()) {
                 flag = true;
                 this.remove(start);
                 this.add(i, race);
             }
+            else if (race.getCFR() == node2.getData().getCFR()) {
+                flag = true;
+                super.remove(start);
+                this.add(i + compareAlpha(race.getName(), node2.getData()
+                    .getName()), race);
+            }
             i++;
             node2 = node2.getNextNode();
         }
+    }
+
+
+    /**
+     * Checks if the first paramater, str1, is lesser, alphabetically, than the
+     * second paramater str2.
+     * 
+     * @param str1
+     *            String to compare
+     * @param str2
+     *            String to compare to
+     * @return 0 if str1 is lesser than str2. Returns 1 otherwise,
+     */
+    private int compareAlpha(String str1, String str2) {
+        if (str1.compareTo(str2) <= 0) {
+            return 0;
+        }
+
+        return 1;
     }
 
 
