@@ -32,7 +32,7 @@ public class CovidReader {
      */
     public CovidReader(String filename) throws FileNotFoundException {
         states = readStateFile(filename);
-        // TODO Calls the CovidGUI class.
+        CovidGUI covidGUI = new CovidGUI(states);
     }
 
     // Methods .................................................................
