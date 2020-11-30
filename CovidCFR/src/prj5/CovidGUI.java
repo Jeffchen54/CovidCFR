@@ -7,6 +7,7 @@ package prj5;
 
 import cs2.Button;
 import cs2.Shape;
+import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 
@@ -44,7 +45,10 @@ public class CovidGUI {
      */
     public CovidGUI(State[] states1) {
         states = states1;
+        modeCFR = false;
+        modeAlpha = false;
         window = new Window();
+        window.setTitle("Covid Fatality by Race");
         sortAlpha = new Button("Sort by Alpha");
         sortAlpha.onClick(this, "clickedSortAlpha");
         window.addButton(sortAlpha, WindowSide.NORTH);
@@ -54,7 +58,24 @@ public class CovidGUI {
         sortCFR = new Button("Sort by CFR");
         sortCFR.onClick(this, "clickedSortCFR");
         window.addButton(sortCFR, WindowSide.NORTH);
-        
+        state1 = new Button("Represent DC");
+        state1.onClick(this, "clickedState");
+        window.addButton(state1, WindowSide.SOUTH);
+        state2 = new Button("Represent GA");
+        state2.onClick(this, "clickedState");
+        window.addButton(state2, WindowSide.SOUTH);
+        state3 = new Button("Represent MD");
+        state3.onClick(this, "clickedState");
+        window.addButton(state3, WindowSide.SOUTH);
+        state4 = new Button("Represent NC");
+        state4.onClick(this, "clickedState");
+        window.addButton(state4, WindowSide.SOUTH);
+        state5 = new Button("Represent TN");
+        state5.onClick(this, "clickedState");
+        window.addButton(state5, WindowSide.SOUTH);
+        state6 = new Button("Represent VA");
+        state6.onClick(this, "clickedState");
+        window.addButton(state6, WindowSide.SOUTH);
     }
     
     // Methods .................................................................
@@ -74,7 +95,8 @@ public class CovidGUI {
      * of the races' in alphabetical order from left to right
      */
     public void clickedSortAlpha(Button button) {
-        
+        modeAlpha = true;
+        modeCFR = false;
     }
     
     
@@ -83,7 +105,8 @@ public class CovidGUI {
      * in descending order from left to right
      */
     public void clickedSortCFR(Button button) {
-        
+        modeCFR = true;
+        modeAlpha = false;
     }
     
     
@@ -92,6 +115,19 @@ public class CovidGUI {
      * and will represent the COVID data in the state
      */
     public void clickedState(Button button) {
-        
+        window.removeAllShapes();
+        String stateName = button.getTitle().substring(10);
+        State state = null;
+        for (State state1 : states) {
+            if (state1.getStateName().equals(stateName)) {
+                state = state1;
+                break;
+            }
+        }
+        TextShape textShape = new TextShape(
+            0, 0, stateName + " Case Fatality Ratio by Race");
+        textShape.moveTo(
+            window.getGraphPanelWidth() / 2 - textShape.getWidth() / 2, 15);
+        window.addShape(textShape);
     }
 }
