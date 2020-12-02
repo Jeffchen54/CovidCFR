@@ -163,6 +163,15 @@ public class State extends LinkedList<Race> {
         build.append("\n" + this.getEntry(4));
         return build.toString();
     }
+    
+    /**
+     * Returns an iterator of the current ordered list.
+     * 
+     * @return iterator of the currently ordered list.
+     */
+    public StateIterator getIterator() {
+        return new StateIterator();
+    }
 
     /**
      * Iterator which iterates starting from the beginning of the list to
