@@ -1,10 +1,13 @@
 /**
  * “I have neither given nor received unauthorized assistance on this
- * assignment.” - 
+ * assignment.” - AA
  */
 
 package prj5;
 
+import java.awt.Color;
+import java.text.DecimalFormat;
+import java.util.Iterator;
 import cs2.Button;
 import cs2.Shape;
 import cs2.TextShape;
@@ -16,7 +19,7 @@ import cs2.WindowSide;
 * Creates and manages the data visualization tool for the COVID
 * data on race mortality rates
 * 
-* @author 
+* @author Aziz Abousam (az1zabousam)
 * @version 11.30.2020
 */
 public class CovidGUI {
@@ -29,14 +32,12 @@ public class CovidGUI {
     private Button state4;
     private Button state5;
     private Button state6;
+    private Button[] stateButtons;
     private Button sortCFR;
     private Button sortAlpha;
     private Button quit;
-    private Shape[] barShapes;
-    private Shape[] barShapeLabels;
     private State[] states;
-    private boolean modeCFR;
-    private boolean modeAlpha;
+    TextShape title;
     
     // Constructor .............................................................
     /**
@@ -45,8 +46,6 @@ public class CovidGUI {
      */
     public CovidGUI(State[] states1) {
         states = states1;
-        modeCFR = false;
-        modeAlpha = false;
         window = new Window();
         window.setTitle("Covid Fatality by Race");
         sortAlpha = new Button("Sort by Alpha");
@@ -76,6 +75,8 @@ public class CovidGUI {
         state6 = new Button("Represent VA");
         state6.onClick(this, "clickedState");
         window.addButton(state6, WindowSide.SOUTH);
+        stateButtons = new Button[] 
+            {state1, state2, state3, state4, state5, state6};
     }
     
     // Methods .................................................................
@@ -95,8 +96,29 @@ public class CovidGUI {
      * of the races' in alphabetical order from left to right
      */
     public void clickedSortAlpha(Button button) {
-        modeAlpha = true;
-        modeCFR = false;
+        if (title == null) {
+            return;
+        }
+        String stateName = title.getText().substring(0, 2);
+        State state = null;
+        for (State state1 : states) {
+            if (state1.getStateName().equals(stateName)) {
+                state = state1;
+                break;
+            }
+        }
+        Iterator<Race> it = state.sortAlpha();
+        for (int i = 0; i < 5; i++) {
+            state.remove(0);
+            state.add(it.next());
+        }
+        
+        for (Button stateButton: stateButtons) {
+            if (stateButton.getTitle().substring(10).equals(stateName)) {
+                clickedState(stateButton);
+                break;
+            }
+        }
     }
     
     
@@ -105,8 +127,29 @@ public class CovidGUI {
      * in descending order from left to right
      */
     public void clickedSortCFR(Button button) {
-        modeCFR = true;
-        modeAlpha = false;
+        if (title == null) {
+            return;
+        }
+        String stateName = title.getText().substring(0, 2);
+        State state = null;
+        for (State state1 : states) {
+            if (state1.getStateName().equals(stateName)) {
+                state = state1;
+                break;
+            }
+        }
+        Iterator<Race> it = state.sortCFR();
+        for (int i = 0; i < 5; i++) {
+            state.remove(0);
+            state.add(it.next());
+        }
+        
+        for (Button stateButton: stateButtons) {
+            if (stateButton.getTitle().substring(10).equals(stateName)) {
+                clickedState(stateButton);
+                break;
+            }
+        }
     }
     
     
@@ -117,6 +160,12 @@ public class CovidGUI {
     public void clickedState(Button button) {
         window.removeAllShapes();
         String stateName = button.getTitle().substring(10);
+        title = new TextShape(
+            0, 0, stateName + " Case Fatality Ratio by Race");
+        title.moveTo(
+            window.getGraphPanelWidth() / 2 - title.getWidth() / 2, 15);
+        window.addShape(title);
+        
         State state = null;
         for (State state1 : states) {
             if (state1.getStateName().equals(stateName)) {
@@ -124,10 +173,30 @@ public class CovidGUI {
                 break;
             }
         }
-        TextShape textShape = new TextShape(
-            0, 0, stateName + " Case Fatality Ratio by Race");
-        textShape.moveTo(
-            window.getGraphPanelWidth() / 2 - textShape.getWidth() / 2, 15);
-        window.addShape(textShape);
+        for (int i = 0; i < 5; i++) {
+            DLNode<Race> node = state.getFront();
+            state.remove(0);
+            Race race = node.getData();
+            TextShape raceName = new TextShape(0, 0, race.getName());
+            raceName.moveTo(i * 125 + 90, 220);
+            window.addShape(raceName);
+            double cfr = race.getCFR();
+            TextShape cfrText;
+            if (cfr == -1) {
+                cfrText = new TextShape(0, 0, "N/A");
+                cfrText.moveTo(i * 125 + 88, 240);
+                window.addShape(cfrText);
+                continue;
+            }
+            DecimalFormat df = new DecimalFormat("#.#");
+            cfrText = new TextShape(0, 0, df.format(cfr).toString() + "%");
+            cfrText.moveTo(i * 125 + 88, 240);
+            window.addShape(cfrText);
+            int barHeight = (int)(cfr * 2);
+            Shape bar = new Shape(0, 0, 12, barHeight, Color.BLUE);
+            bar.moveTo(i * 125 + 100, 215 - barHeight);
+            window.addShape(bar);
+            state.add(race);
+        }
     }
 }
