@@ -33,9 +33,10 @@ public class StateTest extends TestCase {
 
 
     /**
-     * This tests the sortAlpha method and it's iterator.
+     * This tests the sortAlpha method and it's iterator and the toString 
+     * method.
      */
-    public void testSortAlpha() {
+    public void testSortAlphaToString() {
         Iterator<Race> iter = state.sortAlpha();
         assertEquals(state.getNumberOfEntries(), 5);
         assertEquals(state.toString(), "asian: 5407 cases, 4.7% CFR\n"
@@ -64,9 +65,10 @@ public class StateTest extends TestCase {
 
 
     /**
-     * This tests the sortCFR method and it's iterator.
+     * This tests the sortCFR method and it's iterator. Also tests the toString
+     * method.
      */
-    public void testSortCFR() {
+    public void testSortCFRToString() {
         Iterator<Race> iter = state.sortCFR();
         assertEquals(state.getNumberOfEntries(), 5);
         assertEquals(state.toString(), "black: 179563 cases, 7.4% CFR\n"
@@ -88,6 +90,39 @@ public class StateTest extends TestCase {
         assertTrue(iter.hasNext());
 
         assertEquals("other", iter.next().getName());
+        assertFalse(iter.hasNext());
+
+        assertNull(iter.next());
+    }
+    
+    /**
+     * Tests the getStateName() method
+     */
+    public void testGetStateName() {
+        assertEquals("DC", state.getStateName());
+    }
+    
+    /**
+     * Tests the getIterator() method
+     */
+    public void testGetIterator() {
+        Iterator<Race> iter = state.getIterator();
+        
+        assertTrue(iter.hasNext());
+
+        assertEquals("latino", iter.next().getName());
+        assertTrue(iter.hasNext());
+
+        assertEquals("other", iter.next().getName());
+        assertTrue(iter.hasNext());
+
+        assertEquals("white", iter.next().getName());
+        assertTrue(iter.hasNext());
+
+        assertEquals("black", iter.next().getName());
+        assertTrue(iter.hasNext());
+
+        assertEquals("asian", iter.next().getName());
         assertFalse(iter.hasNext());
 
         assertNull(iter.next());

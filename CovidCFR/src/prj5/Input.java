@@ -52,12 +52,11 @@ public class Input {
 
     /**
      * Displays the contents of an iterator using each item's toString method.
-     * Wildcard parameter is used as iterator type does not affect outcome.
      * 
      * @param iter
      *            Iterator to be displayed.
      */
-    private static void displayIterator(Iterator<?> iter) {
+    private static void displayIterator(Iterator<Race> iter) {
         while (iter.hasNext()) {
             System.out.println(iter.next());
         }
