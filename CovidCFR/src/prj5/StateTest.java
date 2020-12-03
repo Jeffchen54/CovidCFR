@@ -96,6 +96,28 @@ public class StateTest extends TestCase {
     }
     
     /**
+     * Tests equal cfr values for the sortCFR() method
+     *
+     * @author Jeff Chen (chenjeff4840)
+     */
+    public void testSameCFR() {
+        Race[] races = new Race[5];
+        races[4] = new Race("asian", 5407, 254);
+        races[3] = new Race("black", 5407, 254);
+        races[0] = new Race("latino", 5407, 254);
+        races[1] = new Race("other", 5407, 254);
+        races[2] = new Race("white", 5407, 254);
+        state = new State("DC", races);
+        state.sortCFR();
+        
+        assertEquals(state.toString(), "asian: 5407 cases, 4.7% CFR\n"
+            + "black: 5407 cases, 4.7% CFR\nlatino: 5407 cases, 4.7% CFR\n"
+            + "other: 5407 cases, 4.7% CFR\nwhite: 5407 cases, 4.7% CFR");
+
+    }
+    
+    
+    /**
      * Tests the getStateName() method
      */
     public void testGetStateName() {

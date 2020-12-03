@@ -93,6 +93,7 @@ public class State extends LinkedList<Race> {
      *            the start of the
      *            index.
      */
+    // 12.3.2020 - chenjeff4840 - Added functionality for equal CFR sort.
     private void cfrSort(int start) {
         Race race = super.getNodeAt(start).getData();
         DLNode<Race> node2 = super.getFront();
@@ -104,36 +105,17 @@ public class State extends LinkedList<Race> {
                 this.remove(start);
                 this.add(i, race);
             }
-            else if (race.getCFR() == node2.getData().getCFR()) {
+            else if (race.getCFR() == node2.getData().getCFR() && node2
+                .getData().getName().compareTo(race.getName()) > 0) {
                 flag = true;
                 super.remove(start);
-                this.add(i + compareAlpha(race.getName(), node2.getData()
-                    .getName()), race);
+                this.add(i, race);
             }
+
             i++;
             node2 = node2.getNextNode();
         }
     }
-
-
-    /**
-     * Checks if the first paramater, str1, is lesser, alphabetically, than the
-     * second paramater str2.
-     * 
-     * @param str1
-     *            String to compare
-     * @param str2
-     *            String to compare to
-     * @return 0 if str1 is lesser than str2. Returns 1 otherwise,
-     */
-    private int compareAlpha(String str1, String str2) {
-        if (str1.compareTo(str2) <= 0) {
-            return 0;
-        }
-
-        return 1;
-    }
-
 
     /**
      * This method sorts the races by greatest to least by CFR.
@@ -163,10 +145,12 @@ public class State extends LinkedList<Race> {
         build.append("\n" + this.getEntry(4));
         return build.toString();
     }
-    
+
+
     /**
      * Returns an iterator of the current ordered list.
      * 
+     * @author Jeff Chen (chenjeff4840)
      * @return iterator of the currently ordered list.
      */
     public StateIterator getIterator() {
