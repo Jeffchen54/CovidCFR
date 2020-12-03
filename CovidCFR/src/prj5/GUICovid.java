@@ -26,16 +26,7 @@ public class GUICovid {
 
     // Fields ..................................................................
     private Window window;
-    private Button state1;
-    private Button state2;
-    private Button state3;
-    private Button state4;
-    private Button state5;
-    private Button state6;
-    private Button[] stateButtons;
-    private Button sortCFR;
-    private Button sortAlpha;
-    private Button quit;
+    Button[] stateButtons;
     private State[] states;
     private TextShape title;
     private boolean cfrMode;
@@ -54,32 +45,32 @@ public class GUICovid {
         window = new Window();
 
         window.setTitle("chenjeff4840, aalbro, az1zabousam");
-        sortAlpha = new Button("Sort by Alpha");
+        Button sortAlpha = new Button("Sort by Alpha");
         sortAlpha.onClick(this, "clickedSortAlpha");
         window.addButton(sortAlpha, WindowSide.NORTH);
-        quit = new Button("Quit");
+        Button quit = new Button("Quit");
         quit.onClick(this, "clickedQuit");
 
         window.addButton(quit, WindowSide.NORTH);
-        sortCFR = new Button("Sort by CFR");
+        Button sortCFR = new Button("Sort by CFR");
         sortCFR.onClick(this, "clickedSortCFR");
         window.addButton(sortCFR, WindowSide.NORTH);
-        state1 = new Button("Represent " + states[0].getStateName());
+        Button state1 = new Button("Represent " + states[0].getStateName());
         state1.onClick(this, "clickedState");
         window.addButton(state1, WindowSide.SOUTH);
-        state2 = new Button("Represent " + states[1].getStateName());
+        Button state2 = new Button("Represent " + states[1].getStateName());
         state2.onClick(this, "clickedState");
         window.addButton(state2, WindowSide.SOUTH);
-        state3 = new Button("Represent " + states[2].getStateName());
+        Button state3 = new Button("Represent " + states[2].getStateName());
         state3.onClick(this, "clickedState");
         window.addButton(state3, WindowSide.SOUTH);
-        state4 = new Button("Represent " + states[3].getStateName());
+        Button state4 = new Button("Represent " + states[3].getStateName());
         state4.onClick(this, "clickedState");
         window.addButton(state4, WindowSide.SOUTH);
-        state5 = new Button("Represent " + states[4].getStateName());
+        Button state5 = new Button("Represent " + states[4].getStateName());
         state5.onClick(this, "clickedState");
         window.addButton(state5, WindowSide.SOUTH);
-        state6 = new Button("Represent " + states[5].getStateName());
+        Button state6 = new Button("Represent " + states[5].getStateName());
         state6.onClick(this, "clickedState");
         window.addButton(state6, WindowSide.SOUTH);
 

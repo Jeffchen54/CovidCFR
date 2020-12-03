@@ -15,7 +15,7 @@ package prj5;
  * @author Aziz Abousam (az1zabousam)
  * @version 11.16.2020
  */
-public class DLNode<T> implements DLNodeInterface<T>{
+public class DLNode<T> implements DLNodeInterface<T> {
 
     // Fields ..................................................................
     private T data;
