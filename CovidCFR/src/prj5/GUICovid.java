@@ -22,7 +22,7 @@ import cs2.WindowSide;
  * @author Aziz Abousam (az1zabousam)
  * @version 11.30.2020
  */
-public class CovidGUI {
+public class GUICovid {
 
     // Fields ..................................................................
     private Window window;
@@ -49,7 +49,7 @@ public class CovidGUI {
      * @param states1
      *            States data to be visualized within the window
      */
-    public CovidGUI(State[] states1) {
+    public GUICovid(State[] states1) {
         states = states1;
         window = new Window();
 

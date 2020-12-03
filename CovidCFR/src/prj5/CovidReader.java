@@ -32,7 +32,7 @@ public class CovidReader {
      */
     public CovidReader(String filename) throws FileNotFoundException {
         states = readStateFile(filename);
-        CovidGUI covidGUI = new CovidGUI(states);
+        GUICovid covidGUI = new GUICovid(states);
     }
 
     // Methods .................................................................
