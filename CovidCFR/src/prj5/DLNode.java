@@ -15,7 +15,7 @@ package prj5;
  * @author Aziz Abousam (az1zabousam)
  * @version 11.16.2020
  */
-public class DLNode<T> {
+public class DLNode<T> implements DLNodeInterface<T>{
 
     // Fields ..................................................................
     private T data;
@@ -59,6 +59,7 @@ public class DLNode<T> {
      * 
      * @return Data for node
      */
+    @Override
     public T getData() {
         return data;
     }
@@ -69,6 +70,7 @@ public class DLNode<T> {
      * 
      * @return Next node
      */
+    @Override
     public DLNode<T> getNextNode() {
         return next;
     }
@@ -79,6 +81,7 @@ public class DLNode<T> {
      * 
      * @return Previous node
      */
+    @Override
     public DLNode<T> getPrevNode() {
         return previous;
     }
@@ -90,6 +93,7 @@ public class DLNode<T> {
      * @param newNode
      *            New reference for next node
      */
+    @Override
     public void setNextNode(DLNode<T> newNode) {
         next = newNode;
     }
@@ -101,6 +105,7 @@ public class DLNode<T> {
      * @param newNode
      *            New reference for previous node
      */
+    @Override
     public void setPrevNode(DLNode<T> newNode) {
         previous = newNode;
     }
