@@ -53,7 +53,7 @@ public class CovidGUI {
         states = states1;
         window = new Window();
 
-        window.setTitle("Covid Fatality by Race");
+        window.setTitle("chenjeff4840, aalbro, az1zabousam");
         sortAlpha = new Button("Sort by Alpha");
         sortAlpha.onClick(this, "clickedSortAlpha");
         window.addButton(sortAlpha, WindowSide.NORTH);
